@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck7so3jgwvjsu"]
+
+[ext_resource type="Script" path="res://example/weapon/lazer_bullet.gd" id="1_l01ov"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y2lmn"]
+radius = 0.00991684
+height = 0.0917691
+
+[sub_resource type="BoxMesh" id="BoxMesh_w32kx"]
+size = Vector3(0.02, 0.02, 0.02)
+
+[node name="LazerBullet" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 19
+input_ray_pickable = false
+mass = 0.02
+freeze_mode = 1
+continuous_cd = true
+script = ExtResource("1_l01ov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.0121002, 5.28917e-10, 5.28917e-10)
+shape = SubResource("CapsuleShape3D_y2lmn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_w32kx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
