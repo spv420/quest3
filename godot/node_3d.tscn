@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwar74s08e8qa"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_q2bbl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ahie"]
+
+[sub_resource type="Environment" id="Environment_eoff3"]
+background_mode = 5
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.95
+ambient_light_energy = 16.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_q2bbl")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.005, 6.235, 4.375)
+omni_range = 1000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D"]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 1.625, -2.885)
+mesh = SubResource("BoxMesh_5ahie")
+skeleton = NodePath("../..")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+environment = SubResource("Environment_eoff3")
+
+[node name="LeftHand" type="OpenXRHand" parent="XROrigin3D"]
+
+[node name="RightHand" type="OpenXRHand" parent="XROrigin3D"]
+hand = 1
