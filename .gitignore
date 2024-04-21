@@ -48,3 +48,4 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
+*.so

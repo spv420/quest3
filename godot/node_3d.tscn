@@ -21,3 +21,5 @@ text = "quest 3 haxx
 
 spv 2024"
 font_size = 512
+
+[node name="W2CPPBridge" type="W2CPPBridge" parent="."]
